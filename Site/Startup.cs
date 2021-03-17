@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Net.Http;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 
 namespace IDSDocker
 {
@@ -30,11 +33,16 @@ namespace IDSDocker
             })
             .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
             {
-                options.Authority = "https://localhost:7100";
+                options.Authority = "https://localhost:8443";
                 options.ClientId = "site";
                 options.ClientSecret = "secret";
 
-                options.ResponseType = "code";                
+                options.ResponseType = "code";
+
+                options.BackchannelHttpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (HttpRequestMessage req, X509Certificate2? cert, X509Chain? chain, SslPolicyErrors errors) => true
+                };
             });
 
             services.AddAuthorization();

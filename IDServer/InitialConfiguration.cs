@@ -18,7 +18,7 @@ namespace IDServer
                     ClientId = "site",
                     ClientName = "Website",
 
-                    RedirectUris = { "https://localhost:7000/signin-oidc" },
+                    RedirectUris = { "https://localhost:7443/signin-oidc" },
                     PostLogoutRedirectUris = { "https://notused" },
 
                     ClientSecrets = { new Secret("secret".Sha256()) },

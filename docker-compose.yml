@@ -1,0 +1,34 @@
+services:
+  idserver:
+    image: ${DOCKER_REGISTRY-}idserver
+    build:
+      context: .
+      dockerfile: IDServer/Dockerfile
+      #network: host
+    #ports:       
+    #   - 8443:8443
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:8443;
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ~/.aspnet/https:/https:ro
+    network_mode: "host"
+
+  site:
+    image: ${DOCKER_REGISTRY-}site
+    build:
+      context: .
+      dockerfile: Site/Dockerfile
+      #network: host      
+    #ports:       
+    #   - 7443:7443
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:7443;
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+    volumes:
+      - ~/.aspnet/https:/https:ro
+    network_mode: "host"

@@ -5,7 +5,14 @@ VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Site", "Site\Site.csproj", "{4004D1A6-D3C5-40AC-9FB2-3E41C5B2DE15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDServer", "IDServer\IDServer.csproj", "{807F9304-10E6-4632-98D7-34D8622A2193}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IDServer", "IDServer\IDServer.csproj", "{807F9304-10E6-4632-98D7-34D8622A2193}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{53DA7579-1B5B-4158-AC96-716D30CF720A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{32D8CEFF-A036-440E-B4C0-9553EC0C8CDC}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +28,10 @@ Global
 		{807F9304-10E6-4632-98D7-34D8622A2193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{807F9304-10E6-4632-98D7-34D8622A2193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{807F9304-10E6-4632-98D7-34D8622A2193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53DA7579-1B5B-4158-AC96-716D30CF720A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53DA7579-1B5B-4158-AC96-716D30CF720A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53DA7579-1B5B-4158-AC96-716D30CF720A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53DA7579-1B5B-4158-AC96-716D30CF720A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
