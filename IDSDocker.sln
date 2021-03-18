@@ -11,7 +11,9 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{32D8CEFF-A036-440E-B4C0-9553EC0C8CDC}"
 	ProjectSection(SolutionItems) = preProject
+		certs\idserver-ssl.conf = certs\idserver-ssl.conf
 		README.md = README.md
+		certs\site-ssl.conf = certs\site-ssl.conf
 	EndProjectSection
 EndProject
 Global

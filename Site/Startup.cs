@@ -33,16 +33,16 @@ namespace IDSDocker
             })
             .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, options =>
             {
-                options.Authority = "https://idserver:8443";
+                options.Authority = "https://192.168.1.104:8443";
                 options.ClientId = "site";
                 options.ClientSecret = "secret";
 
                 options.ResponseType = "code";
 
-                //options.BackchannelHttpHandler = new HttpClientHandler
-                //{
-                //    ServerCertificateCustomValidationCallback = (HttpRequestMessage req, X509Certificate2? cert, X509Chain? chain, SslPolicyErrors errors) => true
-                //};                
+                options.BackchannelHttpHandler = new HttpClientHandler
+                {
+                    ServerCertificateCustomValidationCallback = (HttpRequestMessage req, X509Certificate2? cert, X509Chain? chain, SslPolicyErrors errors) => true
+                };
             });
 
             services.AddAuthorization();
