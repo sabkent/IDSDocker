@@ -3,32 +3,34 @@ services:
     image: ${DOCKER_REGISTRY-}idserver
     build:
       context: .
-      dockerfile: IDServer/Dockerfile
-      #network: host
-    #ports:       
-    #   - 8443:8443
+      dockerfile: IDServer/Dockerfile    
+    ports:       
+       - 8443:8443
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:8443;
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=SomePassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/idserver.pfx
     volumes:
-      - ~/.aspnet/https:/https:ro
-    network_mode: "host"
+      - ./certs:/https/
+      - type: bind
+        source: ./certs/idserver.crt
+        target: /https-root/idserver.crt
 
   site:
     image: ${DOCKER_REGISTRY-}site
     build:
       context: .
-      dockerfile: Site/Dockerfile
-      #network: host      
-    #ports:       
-    #   - 7443:7443
+      dockerfile: Site/Dockerfile    
+    ports:       
+       - 7443:7443
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:7443;
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=password
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/aspnetapp.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=SomePassword
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/site.pfx
     volumes:
-      - ~/.aspnet/https:/https:ro
-    network_mode: "host"
+      - ./certs:/https/
+      - type: bind
+        source: ./certs/site.crt
+        target: /https-root/site.crt 
